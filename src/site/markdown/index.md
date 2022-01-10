@@ -22,4 +22,9 @@ Helps setting up mock environment for [wcm.io Handler][handler].
 |0.x                         |AEM 6.0+
 
 
+### GitHub Repository
+
+Sources: https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.handler
+
+
 [handler]: https://wcm.io/handler/
