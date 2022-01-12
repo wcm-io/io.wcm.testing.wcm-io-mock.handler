@@ -2,6 +2,7 @@
 ======
 [![Build](https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.handler/workflows/Build/badge.svg?branch=develop)](https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.handler/actions?query=workflow%3ABuild+branch%3Adevelop)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.wcm/io.wcm.testing.wcm-io-mock.handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.wcm/io.wcm.testing.wcm-io-mock.handler)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wcm-io_io.wcm.testing.wcm-io-mock.handler&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wcm-io_io.wcm.testing.wcm-io-mock.handler)
 
 Helps setting up mock environment for wcm.io Handler.
 
