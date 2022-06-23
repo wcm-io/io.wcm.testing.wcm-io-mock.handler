@@ -2,7 +2,7 @@
 
 Helps setting up mock environment for [wcm.io Handler][handler].
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.wcm/io.wcm.testing.wcm-io-mock.handler/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.wcm/io.wcm.testing.wcm-io-mock.handler)
+[![Maven Central](https://img.shields.io/maven-central/v/io.wcm/io.wcm.testing.wcm-io-mock.handler)](https://repo1.maven.org/maven2/io/wcm/io.wcm.testing.wcm-io-mock.handler/)
 
 
 ### Documentation
