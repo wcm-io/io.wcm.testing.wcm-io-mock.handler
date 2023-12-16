@@ -128,6 +128,13 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- wcm.io Handler uses Jackson JSON Parsing/Serialization -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

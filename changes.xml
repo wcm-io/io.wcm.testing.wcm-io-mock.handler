@@ -25,6 +25,9 @@
 
     <release version="1.5.0" date="not released">
       <action type="update" dev="sseifert">
+        Add com.fasterxml.jackson.core:jackson-databind dependency as wcm.io Handler uses Jackson for JSON parsing/serialization (instead of org.apache.sling.commons.json).
+      </action>
+      <action type="update" dev="sseifert">
         Switch to Java 11 as minimum version.
       </action>
       <action type="update" dev="sseifert">
