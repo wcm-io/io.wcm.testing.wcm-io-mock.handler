@@ -95,7 +95,7 @@ public final class ContextPlugins {
    */
   private static void registerOptional(AemContextImpl context, String className, Object... properties) {
     try {
-      Class clazz = Class.forName(className);
+      Class<?> clazz = Class.forName(className);
       context.registerInjectActivateService(clazz.newInstance(), properties);
     }
     catch (ClassNotFoundException ex) {
