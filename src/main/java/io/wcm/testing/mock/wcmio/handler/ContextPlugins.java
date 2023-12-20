@@ -24,11 +24,19 @@ import org.apache.sling.testing.mock.osgi.context.ContextPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import io.wcm.handler.link.impl.DefaultLinkHandlerConfig;
+import io.wcm.handler.link.impl.ImageMapLinkResolverImpl;
 import io.wcm.handler.link.impl.LinkHandlerConfigAdapterFactory;
 import io.wcm.handler.media.format.impl.MediaFormatProviderManagerImpl;
 import io.wcm.handler.media.impl.DefaultMediaHandlerConfig;
 import io.wcm.handler.media.impl.MediaHandlerConfigAdapterFactory;
+import io.wcm.handler.mediasource.dam.impl.dynamicmedia.DynamicMediaSupportServiceImpl;
+import io.wcm.handler.mediasource.dam.impl.metadata.AssetSynchonizationService;
+import io.wcm.handler.mediasource.dam.impl.metadata.RenditionMetadataListenerService;
+import io.wcm.handler.richtext.impl.DefaultRichTextHandlerConfig;
 import io.wcm.handler.url.impl.DefaultUrlHandlerConfig;
+import io.wcm.handler.url.impl.SiteRootDetectorImpl;
+import io.wcm.handler.url.impl.UrlHandlerAdapterFactory;
+import io.wcm.handler.url.impl.clientlib.ClientlibProxyRewriterImpl;
 import io.wcm.testing.mock.aem.context.AemContextImpl;
 
 /**
@@ -57,53 +65,33 @@ public final class ContextPlugins {
   static void setUp(AemContextImpl context) {
 
     // url handler
-    registerOptional(context, "io.wcm.handler.url.impl.SiteRootDetectorImpl"); // since URL Handler 1.1.0
-    registerOptional(context, "io.wcm.handler.url.impl.UrlHandlerConfigAdapterFactory"); // since URL Handler 1.0.0
-    registerOptional(context, "io.wcm.handler.url.impl.UrlHandlerAdapterFactory"); // since URL Handler 1.1.0
-    registerOptional(context, "io.wcm.handler.url.impl.clientlib.ClientlibProxyRewriterImpl"); // since URL Handler 1.3.0
-    context.registerInjectActivateService(new DefaultUrlHandlerConfig());
+    context.registerInjectActivateService(SiteRootDetectorImpl.class);
+    context.registerInjectActivateService(UrlHandlerAdapterFactory.class);
+    context.registerInjectActivateService(ClientlibProxyRewriterImpl.class);
+    context.registerInjectActivateService(DefaultUrlHandlerConfig.class);
 
     // media handler
-    context.registerInjectActivateService(new MediaHandlerConfigAdapterFactory());
-    context.registerInjectActivateService(new DefaultMediaHandlerConfig());
-    context.registerInjectActivateService(new MediaFormatProviderManagerImpl());
+    context.registerInjectActivateService(MediaHandlerConfigAdapterFactory.class);
+    context.registerInjectActivateService(DefaultMediaHandlerConfig.class);
+    context.registerInjectActivateService(MediaFormatProviderManagerImpl.class);
 
-    // media handler rendition metadata listener service - since Media Handler 1.6.0
-    registerOptional(context, "io.wcm.handler.mediasource.dam.impl.metadata.AssetSynchonizationService");
-    registerOptional(context, "io.wcm.handler.mediasource.dam.impl.metadata.RenditionMetadataListenerService",
+    // media handler rendition metadata listener service
+    context.registerInjectActivateService(AssetSynchonizationService.class);
+    context.registerInjectActivateService(RenditionMetadataListenerService.class,
         "threadPoolSize", 0, // switch to synchronous mode for unit test
         "allowedRunMode", new String[0]); // support all run modes (unit tests use 'publish' by default)
 
-    // dynamic media support service - since Media Handler 1.10.0
-    registerOptional(context, "io.wcm.handler.mediasource.dam.impl.dynamicmedia.DynamicMediaSupportServiceImpl");
+    // dynamic media support service
+    context.registerInjectActivateService(DynamicMediaSupportServiceImpl.class);
 
     // link handler
-    context.registerInjectActivateService(new LinkHandlerConfigAdapterFactory());
-    context.registerInjectActivateService(new DefaultLinkHandlerConfig());
-    registerOptional(context, "io.wcm.handler.link.impl.ImageMapLinkResolverImpl"); // since Link Handler 1.3.0
+    context.registerInjectActivateService(LinkHandlerConfigAdapterFactory.class);
+    context.registerInjectActivateService(DefaultLinkHandlerConfig.class);
+    context.registerInjectActivateService(ImageMapLinkResolverImpl.class);
 
     // rich text handler
-    registerOptional(context, "io.wcm.handler.richtext.impl.DefaultRichTextHandlerConfig"); // since Rich Text Handler 1.1.0
+    context.registerInjectActivateService(DefaultRichTextHandlerConfig.class);
 
-  }
-
-  /**
-   * Registers an OSGi service if the class exists. Ignores the call if not.
-   * @param context AEM Context
-   * @param className Class name
-   * @param properties Service properties
-   */
-  private static void registerOptional(AemContextImpl context, String className, Object... properties) {
-    try {
-      Class<?> clazz = Class.forName(className);
-      context.registerInjectActivateService(clazz.newInstance(), properties);
-    }
-    catch (ClassNotFoundException ex) {
-      // ignore
-    }
-    catch (InstantiationException | IllegalAccessException ex) {
-      throw new RuntimeException("Unable to instantiate " + className, ex);
-    }
   }
 
 }
