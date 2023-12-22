@@ -25,10 +25,10 @@ import org.jetbrains.annotations.NotNull;
 
 import io.wcm.handler.link.impl.DefaultLinkHandlerConfig;
 import io.wcm.handler.link.impl.ImageMapLinkResolverImpl;
-import io.wcm.handler.link.impl.LinkHandlerConfigAdapterFactory;
+import io.wcm.handler.link.impl.LinkHandlerAdapterFactory;
 import io.wcm.handler.media.format.impl.MediaFormatProviderManagerImpl;
 import io.wcm.handler.media.impl.DefaultMediaHandlerConfig;
-import io.wcm.handler.media.impl.MediaHandlerConfigAdapterFactory;
+import io.wcm.handler.media.impl.MediaHandlerAdapterFactory;
 import io.wcm.handler.mediasource.dam.impl.dynamicmedia.DynamicMediaSupportServiceImpl;
 import io.wcm.handler.mediasource.dam.impl.metadata.AssetSynchonizationService;
 import io.wcm.handler.mediasource.dam.impl.metadata.RenditionMetadataListenerService;
@@ -71,7 +71,7 @@ public final class ContextPlugins {
     context.registerInjectActivateService(DefaultUrlHandlerConfig.class);
 
     // media handler
-    context.registerInjectActivateService(MediaHandlerConfigAdapterFactory.class);
+    context.registerInjectActivateService(MediaHandlerAdapterFactory.class);
     context.registerInjectActivateService(DefaultMediaHandlerConfig.class);
     context.registerInjectActivateService(MediaFormatProviderManagerImpl.class);
 
@@ -85,7 +85,7 @@ public final class ContextPlugins {
     context.registerInjectActivateService(DynamicMediaSupportServiceImpl.class);
 
     // link handler
-    context.registerInjectActivateService(LinkHandlerConfigAdapterFactory.class);
+    context.registerInjectActivateService(LinkHandlerAdapterFactory.class);
     context.registerInjectActivateService(DefaultLinkHandlerConfig.class);
     context.registerInjectActivateService(ImageMapLinkResolverImpl.class);
 
