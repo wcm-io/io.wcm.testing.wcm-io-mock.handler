@@ -32,6 +32,7 @@ import io.wcm.handler.media.impl.MediaHandlerAdapterFactory;
 import io.wcm.handler.mediasource.dam.impl.dynamicmedia.DynamicMediaSupportServiceImpl;
 import io.wcm.handler.mediasource.dam.impl.metadata.AssetSynchonizationService;
 import io.wcm.handler.mediasource.dam.impl.metadata.RenditionMetadataListenerService;
+import io.wcm.handler.mediasource.dam.impl.ngdm.WebOptimizedImageDeliveryServiceImpl;
 import io.wcm.handler.richtext.impl.DefaultRichTextHandlerConfig;
 import io.wcm.handler.url.impl.DefaultUrlHandlerConfig;
 import io.wcm.handler.url.impl.SiteRootDetectorImpl;
@@ -81,8 +82,9 @@ public final class ContextPlugins {
         "threadPoolSize", 0, // switch to synchronous mode for unit test
         "allowedRunMode", new String[0]); // support all run modes (unit tests use 'publish' by default)
 
-    // dynamic media support service
+    // dynamic media support service/NGDM
     context.registerInjectActivateService(DynamicMediaSupportServiceImpl.class);
+    context.registerInjectActivateService(WebOptimizedImageDeliveryServiceImpl.class);
 
     // link handler
     context.registerInjectActivateService(LinkHandlerAdapterFactory.class);
