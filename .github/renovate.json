@@ -5,8 +5,15 @@
     "github>wcm-io/renovate-config:automerge-parent"
   ],
   "ignoreDeps": [
-    "junit:*",
-    "org.junit.jupiter:*",
-    "io.wcm:io.wcm.testing.*"
+    "io.wcm.testing.aem-mock.junit4",
+    "io.wcm.testing.wcm-io-mock.sling",
+    "io.wcm.testing.wcm-io-mock.wcm",
+    "io.wcm.testing.wcm-io-mock.caconfig",
+    "io.wcm.sling.commons",
+    "io.wcm.handler.commons",
+    "io.wcm.handler.url",
+    "io.wcm.handler.media",
+    "io.wcm.handler.media",
+    "io.wcm.handler.richtext"
   ]
 }
