@@ -6,9 +6,6 @@
   ],
   "ignoreDeps": [
     "io.wcm:io.wcm.testing.aem-mock.junit4",
-    "io.wcm:io.wcm.testing.wcm-io-mock.sling",
-    "io.wcm:io.wcm.testing.wcm-io-mock.wcm",
-    "io.wcm:io.wcm.testing.wcm-io-mock.caconfig",
     "io.wcm:io.wcm.sling.commons",
     "io.wcm:io.wcm.handler.commons",
     "io.wcm:io.wcm.handler.url",
