@@ -53,6 +53,7 @@ public final class ContextPlugins {
    * Context plugin for wcm.io Handler
    */
   public static final @NotNull ContextPlugin<AemContextImpl> WCMIO_HANDLER = new AbstractContextPlugin<AemContextImpl>() {
+
     @Override
     public void afterSetUp(@NotNull AemContextImpl context) throws Exception {
       setUp(context);

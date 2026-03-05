@@ -41,9 +41,9 @@ public class MockHandlerTest {
 
   @Rule
   public AemContext context = new AemContextBuilder()
-      .plugin(CACONFIG)
-      .plugin(WCMIO_SLING, WCMIO_WCM, WCMIO_CACONFIG, WCMIO_HANDLER)
-      .build();
+    .plugin(CACONFIG)
+    .plugin(WCMIO_SLING, WCMIO_WCM, WCMIO_CACONFIG, WCMIO_HANDLER)
+    .build();
 
   @Before
   public void setUp() {
